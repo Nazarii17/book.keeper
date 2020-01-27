@@ -1,9 +1,9 @@
-package com.nazarii.tkachuk.bookmanager.model;
+package com.tkachuk.bookmanager.model;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "books")
+@Table(name = "BOOKS")
 public class Book {
     @Id
     @Column(name = "ID")

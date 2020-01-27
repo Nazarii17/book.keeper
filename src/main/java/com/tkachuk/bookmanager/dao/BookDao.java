@@ -1,6 +1,6 @@
-package com.nazarii.tkachuk.bookmanager.dao;
+package com.tkachuk.bookmanager.dao;
 
-import com.nazarii.tkachuk.bookmanager.model.Book;
+import com.tkachuk.bookmanager.model.Book;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ public interface BookDao {
 
     public void updateBook(Book book);
 
-    public void deleteBook(int id);
+    public void removeBook(int id);
 
-    public Book getBookByID(int id);
+    public Book getBookById(int id);
 
     public List<Book> listBooks();
 }

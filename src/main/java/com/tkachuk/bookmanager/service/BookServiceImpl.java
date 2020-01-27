@@ -1,7 +1,7 @@
-package com.nazarii.tkachuk.bookmanager.service;
+package com.tkachuk.bookmanager.service;
 
-import com.nazarii.tkachuk.bookmanager.dao.BookDao;
-import com.nazarii.tkachuk.bookmanager.model.Book;
+import com.tkachuk.bookmanager.dao.BookDao;
+import com.tkachuk.bookmanager.model.Book;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,14 +29,14 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public void deleteBook(int id) {
-        this.bookDao.deleteBook(id);
+    public void removeBook(int id) {
+        this.bookDao.removeBook(id);
     }
 
     @Override
     @Transactional
     public Book getBookById(int id) {
-        return this.bookDao.getBookByID(id);
+        return this.bookDao.getBookById(id);
     }
 
     @Override
@@ -44,4 +44,6 @@ public class BookServiceImpl implements BookService {
     public List<Book> listBooks() {
         return this.bookDao.listBooks();
     }
+
+
 }

@@ -1,8 +1,6 @@
-package com.nazarii.tkachuk.bookmanager.dao;
+package com.tkachuk.bookmanager.dao;
 
-import com.nazarii.tkachuk.bookmanager.model.Book;
-
-
+import com.tkachuk.bookmanager.model.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -10,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
 
 @Repository
 public class BookDaoImpl implements BookDao {
@@ -26,32 +23,33 @@ public class BookDaoImpl implements BookDao {
     public void addBook(Book book) {
         Session session = this.sessionFactory.getCurrentSession();
         session.persist(book);
-        logger.info("Book successfully saved. Book details: + " + book);
+        logger.info("Book successfully saved. Book details: " + book);
     }
 
     @Override
     public void updateBook(Book book) {
         Session session = this.sessionFactory.getCurrentSession();
         session.update(book);
-        logger.info("Book successfully updated. Book details: + " + book);
+        logger.info("Book successfully update. Book details: " + book);
     }
 
     @Override
-    public void deleteBook(int id) {
+    public void removeBook(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Book book = (Book) session.load(Book.class, id);
+        Book book = (Book) session.load(Book.class, new Integer(id));
 
-        if (book != null) {
+        if(book!=null){
             session.delete(book);
         }
-        logger.info("Book successfully removed. Book details: + " + book);
+        logger.info("Book successfully removed. Book details: " + book);
     }
 
     @Override
-    public Book getBookByID(int id) {
-        Session session = this.sessionFactory.getCurrentSession();
-        Book book = (Book) session.load(Book.class, id);
-        logger.info("Book successfully loaded. Book details: + " + book);
+    public Book getBookById(int id) {
+        Session session =this.sessionFactory.getCurrentSession();
+        Book book = (Book) session.load(Book.class, new Integer(id));
+        logger.info("Book successfully loaded. Book details: " + book);
+
         return book;
     }
 
@@ -61,7 +59,7 @@ public class BookDaoImpl implements BookDao {
         Session session = this.sessionFactory.getCurrentSession();
         List<Book> bookList = session.createQuery("from Book").list();
 
-        for (Book book : bookList) {
+        for(Book book: bookList){
             logger.info("Book list: " + book);
         }
 
